@@ -2,7 +2,7 @@ name: Build and deploy frontend
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 env:
   IMAGE_NAME: itec_frontend
@@ -37,12 +37,12 @@ jobs:
           docker push $IMAGE_ID:$VERSION
 
   deploy-frontend:
-     needs: [ build-frontend ]
-     runs-on: ubuntu-latest
-     steps:
-       - name: Pull & run image on server
-         uses: appleboy/ssh-action@master
-         with:
-           username: ${{ secrets.USERNAME }}
-           key: ${{ secrets.SSH_KEY }}
-           script: sudo /home/docker/deploy.sh /home/docker/itec/itec-frontend latest
+    needs: [build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull & run image on server
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: sudo /home/docker/deploy.sh /home/docker/itec/itec-frontend latest
