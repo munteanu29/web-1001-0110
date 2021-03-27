@@ -60,6 +60,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           script: sudo /home/docker/deploy.sh /home/docker/itec/itec-frontend latest
 
@@ -71,5 +72,6 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           script: sudo /home/docker/deploy.sh /home/docker/itec/itec-backend latest
