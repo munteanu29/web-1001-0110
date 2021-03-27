@@ -55,7 +55,14 @@ export const Map = (props:{location:LocationModel}) => {
 
     hMap.addLayer(layer);
 
+    // add pins on map
     hMap.addObject(new H.map.Marker(location));
+    hMap.addObject(
+      new H.map.Marker({
+        lat: 45.75346,
+        lng: 21.22334,
+      })
+    );
 
     // This will act as a cleanup to run once this hook runs again.
     // This includes when the component un-mounts
