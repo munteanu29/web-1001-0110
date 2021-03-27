@@ -8,9 +8,14 @@ export const Map = () => {
   // Create a reference to the HTML element we want to put the map on
   const mapRef = React.useRef(null);
 
-  const [location, setLocation] = React.useState<LocationModel>(
-    getUserLocation()
-  );
+  const [location, setLocation] = React.useState<LocationModel>({
+    lat: 45.75346,
+    lng: 21.22334,
+  });
+
+  React.useEffect(() => {
+    getUserLocation(setLocation);
+  }, []);
 
   /**
    * Create the map instance
