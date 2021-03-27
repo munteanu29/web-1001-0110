@@ -10,16 +10,14 @@ namespace itec_backend.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        // public DbSet<CustomersEntity> CustomersEntities { get; set; }
-        // public DbSet<GoodsEntity> GoodsEntities { get; set; }
 
-        
+        public DbSet<LocationEntity> LocationEntities { get; set; }
+        public DbSet<CountryEntity> CountryEntities { get; set; }
 
-        public IRepository<T> GetRepository<T>() where T: Entity
+
+        public IRepository<T> GetRepository<T>() where T : Entity
         {
             return new Repository<T>(this);
         }
-
-
     }
 }
