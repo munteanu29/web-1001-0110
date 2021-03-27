@@ -548,3 +548,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,react,visualstudiocode,visualstudio,rider,webstorm
+
+.env

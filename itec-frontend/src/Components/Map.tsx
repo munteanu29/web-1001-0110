@@ -10,15 +10,15 @@ dataPoints.push(new H.clustering.DataPoint(57.01, 1.01));
 dataPoints.push(new H.clustering.DataPoint(33.01, 12.01));
 dataPoints.push(new H.clustering.DataPoint(40.01, 3.01));
 
-export const Map = (props:{location:LocationModel}) => {
+export const Map = (props: { location: LocationModel }) => {
   // Create a reference to the HTML element we want to put the map on
   const mapRef = React.useRef(null);
 
   const [location, setLocation] = React.useState<LocationModel>(props.location);
 
   React.useEffect(() => {
-    //getUserLocation(setLocation);
-  }, [location]);
+    getUserLocation(setLocation);
+  }, []);
 
   /**
    * Create the map instance

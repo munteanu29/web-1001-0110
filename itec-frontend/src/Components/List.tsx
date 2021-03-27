@@ -1,7 +1,6 @@
 import {
   Button,
   createStyles,
-  Grid,
   makeStyles,
   TextField,
   Theme,
@@ -29,14 +28,18 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function List(props: {
   setLocation: any;
   location: LocationModel;
+  searchString: string;
+  setSearchString: (e: string) => void;
 }) {
   const classes = useStyles();
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     new Date()
   );
-  const [country, setCountry] = useState("");
+  const [searchString, setSearchString] = useState("");
   const [countryData, setCountryData] = useState<Country>({
-    covidVaccinesRate: 0, name:"", weather:{weather:[{description:"", icon:""}], main:{temp:0}}
+    covidVaccinesRate: 0,
+    name: "",
+    weather: { weather: [{ description: "", icon: "" }], main: { temp: 0 } },
   });
   const [locations, setLocations] = useState([]);
   const { getCountry } = Api();
@@ -47,16 +50,14 @@ export default function List(props: {
   const [weatherModel, setWeatherModal] = useState(false);
 
   const getCountryConst = async () => {
-    var response = await getCountry(country, 45, 46);
-    console.log(country);
+    // var response = await getCountry(country, 45, 46);
+    // var response = await getCountry(searchString);
     setLocations(response.data.locationEntities);
     setCountryData(response.data);
-    console.log(response.data);
   };
 
   function search() {
     getCountryConst();
-    console.log(locations);
   }
   const toggleWeatherModal = () => {
     setWeatherModal(!weatherModel);
@@ -74,15 +75,15 @@ export default function List(props: {
     <div className="list">
       <form className={classes.container} noValidate>
         <div className="fields">
-          <TextField style={{margin:"5px"}}
-            label="Country"
+          <TextField
+            label="Search a location"
             id="outlined-size-small"
-            defaultValue={country}
+            defaultValue={searchString}
             variant="outlined"
             size="small"
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={(e) => setSearchString(e.target.value)}
           />
-          <Button style={{margin:"5px"}} onClick={() => search()}>
+          <Button onClick={() => props.setSearchString(searchString)}>
             <SearchIcon />
             Search
           </Button>
@@ -97,9 +98,7 @@ export default function List(props: {
             </h4>
           </div>
           <div className="weatherDiv">
-            <WeatherModal
-              weather={countryData.weather}
-            />
+            <WeatherModal weather={countryData.weather} />
           </div>
         </div>
       ) : (
