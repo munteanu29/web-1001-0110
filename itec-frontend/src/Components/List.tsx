@@ -7,15 +7,15 @@ import { Country } from '../Models/Location';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
+      display: "flex",
+      flexWrap: "wrap",
     },
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       width: 200,
     },
-  }),
+  })
 );
 
 export default function List() {
@@ -26,9 +26,9 @@ export default function List() {
     const [locations, setLocations]=useState([]);
     const {getCountry}=Api();
 
-    const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
-      };
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
 
     const getCountryConst=async()=>
     {
@@ -85,21 +85,21 @@ export default function List() {
               </div> 
               : ''}
             {locations.length!==0?
-            <div className="locations">
-              <h3>Locations:</h3>
-              {
-                locations.map((l: any)=>
+              <div className="locations">
+                <h3>Locations:</h3>
                 {
-                    return(
-                      <div className="location">
-                        <h4>{l.name}</h4>
-                        <h4>{l.price} &#8364;</h4>
-                      </div>
-                    )
-                })
-              }
-            </div>
+                  locations.map((l: any)=>
+                  {
+                      return(
+                        <div className="location">
+                          <h4>{l.name}</h4>
+                          <h4>{l.price} &#8364;</h4>
+                        </div>
+                      )
+                  })
+                }
+              </div>
             :""}
         </div>
-    )
+  );
 }
