@@ -11,6 +11,6 @@ export const SearchLocation = async (searchString: string) => {
 
 export const GetNearbyLocations = async (location: LocationModel) => {
   return axios.get(
-    `https://browse.search.hereapi.com/v1/browse?at=${location.lat},${location.lng}&limit=20&categories=350&apiKey=${apiKey}`
+    `https://browse.search.hereapi.com/v1/browse?at=${location.lat},${location.lng}&limit=10&categories=350&apiKey=${apiKey}`
   );
 };

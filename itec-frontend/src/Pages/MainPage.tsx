@@ -4,40 +4,54 @@ import { Map } from "../Components/Map";
 import WeatherModal from "../Components/WeatherModal";
 import { LocationModel } from "../Models/Location";
 import { GetNearbyLocations, SearchLocation } from "../Services/HereApi";
+import { getUserLocation } from "../Services/Location";
 
 export default function MainPage() {
-  const [clickedLocation, setClickedLocation] = useState<LocationModel>({
-    lat: 45.75346,
-    lng: 21.22334,
+  const [selectedLocation, setSelectedLocation] = useState<{
+    country: string;
+    location: LocationModel;
+  }>({
+    location: { lat: 45.75346, lng: 21.22334 },
+    country: "Romania",
   });
   const [searchString, setSearchString] = useState<string>("");
+  const [nearbyLocations, setNearbyLocations] = useState<LocationModel[]>([]);
 
-  useEffect(() => {}, [clickedLocation]);
+  React.useEffect(() => {
+    // getUserLocation(setSelectedLocation);
+  }, []);
+
+  useEffect(() => {
+    if (selectedLocation && selectedLocation.location)
+      GetNearbyLocations(selectedLocation?.location).then((res) =>
+        setNearbyLocations(res.data.items.map((i: any) => i.position))
+      );
+  }, [selectedLocation]);
 
   useEffect(() => {
     if (searchString && searchString !== "")
       SearchLocation(searchString).then((res) => {
-        setClickedLocation(res.data.items[0].position);
-        GetNearbyLocations(res.data.items[0].position).then((res) =>
-          console.log(res.data.items.map((i: any) => i.title))
-        );
-        // res.data.items[0]?.address.city -> tara
+        setSelectedLocation({
+          location: res.data?.items[0]?.position,
+          country: res.data.items[0]?.address.city,
+        });
       });
   }, [searchString]);
 
   return (
     <div className="main">
       <List
-        location={clickedLocation}
-        setLocation={(e: LocationModel) => setClickedLocation(e)}
+        location={selectedLocation}
+        setLocation={(e: LocationModel) =>
+          setSelectedLocation({ ...selectedLocation, location: e })
+        }
         searchString={searchString}
         setSearchString={setSearchString}
       />
-      <Map location={clickedLocation} />
-      {/* <WeatherModal
-        lat={clickedLocation.lat}
-        long={clickedLocation.lng}
-      /> */}
+      <Map
+        location={selectedLocation.location}
+        nearbyLocations={nearbyLocations}
+      />
     </div>
   );
 }
