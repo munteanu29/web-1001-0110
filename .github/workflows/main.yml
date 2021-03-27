@@ -2,7 +2,7 @@ name: Build and deploy frontend
 
 on:
   push:
-    branches: [main]
+    branches: [production]
 
 jobs:
   build-frontend:
