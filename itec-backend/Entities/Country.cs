@@ -9,7 +9,7 @@ namespace itec_backend.Entities
         {
             Name = name;
             CovidVaccinationRate = covidVaccinationRate;
-            CovidVaccinationDate = DateTime.Today;
+            CovidVaccinationDate = covidVaccinationDate;
 
         }
         public string Name { get; set; }
