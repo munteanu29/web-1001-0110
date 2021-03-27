@@ -20,11 +20,11 @@
       <e p="Entities" t="Include">
         <e p="Country.cs" t="Include" />
         <e p="Entity.cs" t="Include" />
-        <e p="Location.cs" t="Include" />
       </e>
       <e p="Helpers" t="Include">
         <e p="CovidVaccinationRate.cs" t="Include" />
         <e p="EnvVarManager.cs" t="Include" />
+        <e p="WeatherHelper.cs" t="Include" />
       </e>
       <e p="itec-backend.csproj" t="IncludeRecursive" />
       <e p="Migrations" t="Include">
@@ -32,12 +32,13 @@
         <e p="20210327113326_firstMigration.Designer.cs" t="Include" />
         <e p="20210327130951_add country.cs" t="Include" />
         <e p="20210327130951_add country.Designer.cs" t="Include" />
+        <e p="20210327203957_removed enities .cs" t="Include" />
+        <e p="20210327203957_removed enities .Designer.cs" t="Include" />
         <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
         <e p="CountryModel.cs" t="Include" />
         <e p="CovidVaccinRate.cs" t="Include" />
-        <e p="LocationModel.cs" t="Include" />
         <e p="WeatherModel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">

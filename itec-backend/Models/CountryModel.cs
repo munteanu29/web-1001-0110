@@ -7,7 +7,11 @@ namespace itec_backend.Models
     public class CountryModel
     {
         public string Name { get; set; }
-        
-        public List<LocationModel> LocationEntities { get; set; }
+        public float covidVaccinesRate { get; set; }
+        public  WeatherModel weather {
+            get;
+            set;
+        }
+
     }
 }

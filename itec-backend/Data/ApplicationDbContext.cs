@@ -11,7 +11,6 @@ namespace itec_backend.Data
         {
         }
 
-        public DbSet<LocationEntity> LocationEntities { get; set; }
         public DbSet<CountryEntity> CountryEntities { get; set; }
 
 

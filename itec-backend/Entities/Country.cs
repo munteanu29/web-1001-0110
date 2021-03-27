@@ -9,14 +9,11 @@ namespace itec_backend.Entities
         {
             Name = name;
             CovidVaccinationRate = covidVaccinationRate;
-            LocationEntities = new List<LocationEntity>();
             CovidVaccinationDate = DateTime.Today;
-            CovidVaccinationDate = covidVaccinationDate;
 
         }
         public string Name { get; set; }
         public float CovidVaccinationRate { get; set; }
         public DateTime CovidVaccinationDate { get; set; }
-        public List<LocationEntity> LocationEntities { get; set; }
     }
 }
