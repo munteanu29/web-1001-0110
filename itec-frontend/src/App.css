@@ -77,3 +77,24 @@
     width: auto;
   }
 }
+
+.locations{
+  width: 300px;
+  text-align: start;
+  padding: 20px;
+}
+
+.location{
+  background-color: rgba(0, 128, 0, 0.226);
+  margin: 10px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.covidRate{
+  text-align: start;
+  padding: 20px;
+  display: flex;
+}
