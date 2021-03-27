@@ -7,13 +7,18 @@ export interface Api {
 const baseURL = "https://api-itec.adelin.ninja/api/";
 
 export const Api = () => {
-
   async function getCountry(country: string) {
-    return await axios.get(`${baseURL}Country/GetCountry?countryName=${country}` );
+    return await axios.get(
+      `${baseURL}Country/GetCountry?countryName=${country}`
+    );
+  }
+  async function getWeather(lat: string, long: string) {
+    return await axios.get(`${baseURL}Weather/GetWeather?x=${lat}&y=${long}`);
   }
 
   return {
-    getCountry
+    getCountry,
+    getWeather,
   };
 };
 
