@@ -44,7 +44,7 @@ export const Map = () => {
 
     var clusteredDataProvider = new H.clustering.Provider(dataPoints);
 
-    // Create a layer that includes the data provider and its data points: 
+    // Create a layer that includes the data provider and its data points:
     var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
 
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(hMap));
@@ -55,9 +55,8 @@ export const Map = () => {
     const ui = H.ui.UI.createDefault(hMap, defaultLayers);
 
     hMap.addLayer(layer);
-    //hMap.addLayer(noiseMarker);
 
-    //hMap.addObject(new H.map.Marker.setData(57.01, 1.01));
+    hMap.addObject(new H.map.Marker(location));
 
     // This will act as a cleanup to run once this hook runs again.
     // This includes when the component un-mounts
