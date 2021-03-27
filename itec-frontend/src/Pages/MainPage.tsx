@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import List from "../Components/List";
 import { Map } from "../Components/Map";
+import WeatherModal from "../Components/WeatherModal";
 import { LocationModel } from "../Models/Location";
 
 export default function MainPage() {
@@ -20,6 +21,10 @@ export default function MainPage() {
         setLocation={(e: LocationModel) => setClickedLocation(e)}
       />
       <Map location={clickedLocation} />
+      {/* <WeatherModal
+        lat={clickedLocation.lat}
+        long={clickedLocation.lng}
+      /> */}
     </div>
   );
 }

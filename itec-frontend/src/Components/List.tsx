@@ -36,7 +36,7 @@ export default function List(props: {
   );
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState<Country>({
-    covidVaccinationRate: 0,
+    covidVaccinesRate: 0, name:"", weather:{weather:[{description:"", icon:""}], main:{temp:0}}
   });
   const [locations, setLocations] = useState([]);
   const { getCountry } = Api();
@@ -47,7 +47,8 @@ export default function List(props: {
   const [weatherModel, setWeatherModal] = useState(false);
 
   const getCountryConst = async () => {
-    var response = await getCountry(country);
+    var response = await getCountry(country, 45, 46);
+    console.log(country);
     setLocations(response.data.locationEntities);
     setCountryData(response.data);
     console.log(response.data);
@@ -73,7 +74,7 @@ export default function List(props: {
     <div className="list">
       <form className={classes.container} noValidate>
         <div className="fields">
-          <TextField
+          <TextField style={{margin:"5px"}}
             label="Country"
             id="outlined-size-small"
             defaultValue={country}
@@ -81,43 +82,30 @@ export default function List(props: {
             size="small"
             onChange={(e) => setCountry(e.target.value)}
           />
-          <TextField
-            id="date"
-            label="Arrival"
-            type="date"
-            defaultValue={selectedDate}
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField
-            id="date"
-            label="Departure"
-            type="date"
-            defaultValue={selectedDate}
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <Button onClick={() => search()}>
+          <Button style={{margin:"5px"}} onClick={() => search()}>
             <SearchIcon />
             Search
           </Button>
         </div>
       </form>
-      {countryData.covidVaccinationRate !== 0 ? (
-        <div className="covidRate">
-          <h4>Covid Vaccination Rate: &nbsp;&nbsp;</h4>
-          <h3 style={{ color: "#228B22" }}>
-            {countryData.covidVaccinationRate}%
-          </h3>
+      {countryData.covidVaccinesRate !== 0 ? (
+        <div>
+          <div className="covidRate">
+            <h4>Covid Vaccination Rate: &nbsp;&nbsp;</h4>
+            <h4 style={{ color: "#228B22" }}>
+              {countryData.covidVaccinesRate}%
+            </h4>
+          </div>
+          <div className="weatherDiv">
+            <WeatherModal
+              weather={countryData.weather}
+            />
+          </div>
         </div>
       ) : (
         ""
       )}
-      {locations.length !== 0 ? (
+      {/* {locations.length !== 0 ? (
         <div className="locations">
           <h4>Locations:</h4>
           {locations.map((l: any) => {
@@ -134,13 +122,7 @@ export default function List(props: {
         </div>
       ) : (
         ""
-      )}
-      <WeatherModal
-        closeFilterModal={toggleWeatherModal}
-        open={weatherModel}
-        lat={props.location.lat}
-        long={props.location.lng}
-      />
+      )} */}
     </div>
   );
 }

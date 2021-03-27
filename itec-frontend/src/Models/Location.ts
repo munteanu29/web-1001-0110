@@ -4,5 +4,19 @@ export interface LocationModel {
 }
 
 export interface Country {
-  covidVaccinationRate: number
+  covidVaccinesRate: number,
+  name: string,
+  weather: IWeatherResponse
+}
+
+export interface IWeatherResponse {
+  weather: [
+    {
+      description: string;
+      icon: string;
+    }
+  ];
+  main: {
+    temp: number;
+  };
 }
