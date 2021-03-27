@@ -38,6 +38,7 @@
         <e p="CountryModel.cs" t="Include" />
         <e p="CovidVaccinRate.cs" t="Include" />
         <e p="LocationModel.cs" t="Include" />
+        <e p="WeatherModel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
