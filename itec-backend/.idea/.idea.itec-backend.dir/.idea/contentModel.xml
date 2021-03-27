@@ -8,26 +8,37 @@
       <e p="appsettings.json" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
+        <e p="CountryController.cs" t="Include" />
         <e p="WeatherForecastController.cs" t="Include" />
       </e>
+      <e p="covidStats.json" t="Include" />
       <e p="Data" t="Include">
         <e p="ApplicationDbContext.cs" t="Include" />
         <e p="IRepository.cs" t="Include" />
         <e p="Repository.cs" t="Include" />
       </e>
       <e p="Entities" t="Include">
+        <e p="Country.cs" t="Include" />
         <e p="Entity.cs" t="Include" />
+        <e p="Location.cs" t="Include" />
       </e>
       <e p="Helpers" t="Include">
+        <e p="CovidVaccinationRate.cs" t="Include" />
         <e p="EnvVarManager.cs" t="Include" />
       </e>
       <e p="itec-backend.csproj" t="IncludeRecursive" />
       <e p="Migrations" t="Include">
         <e p="20210327113326_firstMigration.cs" t="Include" />
         <e p="20210327113326_firstMigration.Designer.cs" t="Include" />
+        <e p="20210327130951_add country.cs" t="Include" />
+        <e p="20210327130951_add country.Designer.cs" t="Include" />
         <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
       </e>
-      <e p="Models" t="Include" />
+      <e p="Models" t="Include">
+        <e p="CountryModel.cs" t="Include" />
+        <e p="CovidVaccinRate.cs" t="Include" />
+        <e p="LocationModel.cs" t="Include" />
+      </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp3.1" t="Include">
