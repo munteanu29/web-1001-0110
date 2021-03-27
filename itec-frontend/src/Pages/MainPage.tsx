@@ -33,7 +33,7 @@ export default function MainPage() {
       SearchLocation(searchString).then((res) => {
         setSelectedLocation({
           location: res.data?.items[0]?.position,
-          country: res.data.items[0]?.address.city,
+          country: res.data.items[0]?.address.countryName,
         });
       });
   }, [searchString]);

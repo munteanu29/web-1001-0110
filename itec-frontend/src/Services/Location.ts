@@ -16,6 +16,4 @@ export const getUserLocation = (callback: Function) => {
   } else {
     navigator.geolocation.getCurrentPosition(success, errorHandler);
   }
-
-  
 };

@@ -44,12 +44,11 @@ export default function List(props: {
   const { getCountry } = Api();
 
   useEffect(() => {
-    getCountry(props.location?.country, props.location?.location).then(
-      (response) =>
-        // setLocations(response.data.locationEntities);
-        setCountryData(response.data)
-    );
-  }, []);
+    getCountry(
+      props.location?.country,
+      props.location?.location
+    ).then((response) => setCountryData(response.data));
+  }, [props.location]);
 
   return (
     <div className="list">
