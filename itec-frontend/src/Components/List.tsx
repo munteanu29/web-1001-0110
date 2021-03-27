@@ -2,7 +2,7 @@ import { Button, createStyles, Grid, makeStyles, TextField, Theme } from '@mater
 import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search';
 import Api from '../Services/api';
-import { Country } from '../Models/Location';
+import { Country, LocationModel } from '../Models/Location';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function List() {
+export default function List(props:{setLocation:any}) {
     const classes = useStyles();
     const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date(),);
     const [country, setCountry]=useState("");
@@ -44,6 +44,14 @@ export default function List() {
       console.log(locations);
     }
 
+    function showLocation(x:number, y:number)
+    {
+      var location:LocationModel = {
+        lat:x,
+        lng:y
+      }
+      props.setLocation(location);
+    }
     return (
         <div className="list">
             <form className={classes.container} noValidate>
@@ -81,17 +89,18 @@ export default function List() {
             </form>
             {countryData.covidVaccinationRate!==0? 
               <div className="covidRate">
-                <span>Covid Vaccination Rate:<h3>{countryData.covidVaccinationRate}%</h3></span>
+                <h4>Covid Vaccination Rate: &nbsp;&nbsp;</h4>
+                <h3 style={{color:"#228B22"}}>{countryData.covidVaccinationRate}%</h3>
               </div> 
               : ''}
             {locations.length!==0?
               <div className="locations">
-                <h3>Locations:</h3>
+                <h4>Locations:</h4>
                 {
                   locations.map((l: any)=>
                   {
                       return(
-                        <div className="location">
+                        <div className="location" onClick={()=>showLocation(l.xCoordonate, l.yCoordonate)}>
                           <h4>{l.name}</h4>
                           <h4>{l.price} &#8364;</h4>
                         </div>
