@@ -40,7 +40,7 @@ export const Map = (props: {
     return () => {
       hMap.dispose();
     };
-  }, [mapRef, props.location]);
+  }, [mapRef, props.location, props.nearbyLocations]);
 
   return (
     <div className="map">
