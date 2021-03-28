@@ -18,7 +18,7 @@ namespace itec_backend.Helpers
                 var json = wc.DownloadString("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json");
                 var countryData = new CountryData();
                 var movie1 = JsonConvert.DeserializeObject<List<CovidVaccinRate>>(json);
-                var covidVaccinRate=movie1.FirstOrDefault(t => String.Equals(t.country, countryName, StringComparison.CurrentCultureIgnoreCase));
+                var covidVaccinRate=movie1.FirstOrDefault(t => String.Equals(t.country.ToLower(), countryName.ToLower(), StringComparison.CurrentCultureIgnoreCase));
                 if(covidVaccinRate!=null)
                     countryData= covidVaccinRate.data
                         .FindLast(t => t.date != String.Empty );
