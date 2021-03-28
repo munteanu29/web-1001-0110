@@ -4,18 +4,9 @@ WORKDIR /app
 
 
 COPY package.json package-lock.json ./
-RUN npm ci --silent
+RUN npm i
 
 COPY ./ ./
-
-RUN npm run build
-
-# =================== RUNTIME ===================
-
-FROM nginx:alpine
-
-COPY --from=frontendBuilder /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 80
 
+CMD ["npm", "run","prod"]

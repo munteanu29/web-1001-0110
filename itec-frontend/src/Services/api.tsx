@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
+import { LocationModel } from "../Models/Location";
 
 export interface Api {
   readonly getCountry: (data: any) => AxiosResponse<[]>;
@@ -7,18 +8,14 @@ export interface Api {
 const baseURL = "https://api-itec.adelin.ninja/api/";
 
 export const Api = () => {
-  async function getCountry(country: string) {
+  async function getCountry(country: string, location: LocationModel) {
     return await axios.get(
-      `${baseURL}Country/GetCountry?countryName=${country}`
+      `${baseURL}Country/GetCountryInfo?countryName=${country}&lat=${location.lat}&lng=${location.lng}`
     );
-  }
-  async function getWeather(lat: string, long: string) {
-    return await axios.get(`${baseURL}Weather/GetWeather?x=${lat}&y=${long}`);
   }
 
   return {
     getCountry,
-    getWeather,
   };
 };
 
