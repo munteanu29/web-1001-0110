@@ -71,7 +71,9 @@ export default function List(props: {
       {countryData.covidVaccinesRate !== 0 ? (
         <div>
           <div className="covidRate">
-            <h4>Covid Vaccination Rate: &nbsp;&nbsp;</h4>
+            <h4>
+              Covid Vaccination Rate in {props.location.country}: &nbsp;&nbsp;
+            </h4>
             <h4 style={{ color: "#228B22" }}>
               {countryData.covidVaccinesRate}%
             </h4>

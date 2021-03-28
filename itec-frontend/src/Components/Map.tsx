@@ -16,7 +16,7 @@ export const Map = (props: {
 }) => {
   const mapRef = React.useRef(null);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (!mapRef.current) return;
     const platform = new H.service.Platform({
       apikey: "waD3Mkr9fcr7L0_y_QF0-jaesYDGNzR3X_u4HQEVM9s",
